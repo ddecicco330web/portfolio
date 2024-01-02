@@ -1,17 +1,11 @@
 @import '../../variables.scss';
+@import '../../animations.scss';
 
 .footer-container {
   background-color: black;
   bottom: -100px;
   animation: slide-up 0.8s ease-out;
   animation-fill-mode: forwards;
-}
-
-@keyframes slide-up {
-  100% {
-    bottom: 0px;
-    z-index: 999;
-  }
 }
 
 .icon {

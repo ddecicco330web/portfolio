@@ -1,4 +1,5 @@
 @import '../../variables.scss';
+@import '../../animations.scss';
 
 .about-img-container {
   border: solid;
@@ -10,7 +11,7 @@
   justify-content: center;
   position: relative;
   right: -1000px;
-  animation: about-img-slide 1s ease-out;
+  animation: slide-left 1s ease-out;
   animation-fill-mode: forwards;
   padding: 20px;
 }
@@ -24,12 +25,6 @@
   animation-delay: 1s;
 }
 
-@keyframes about-img-slide {
-  100% {
-    right: 0px;
-  }
-}
-
 .about-text-container {
   background-color: $bg-color;
   display: flex;
@@ -40,14 +35,8 @@
   border-color: $primary-color;
   position: relative;
   left: -1000px;
-  animation: about-text-slide 1s ease-out;
+  animation: slide-right 1s ease-out;
   animation-fill-mode: forwards;
-}
-
-@keyframes about-text-slide {
-  100% {
-    left: 0px;
-  }
 }
 
 .about-text-container h1 {
@@ -73,12 +62,6 @@
   animation: appear 0.5s ease-out;
   animation-delay: 1s;
   animation-fill-mode: forwards;
-}
-
-@keyframes appear {
-  100% {
-    opacity: 1;
-  }
 }
 
 .container-size {

@@ -1,0 +1,83 @@
+@import '../../variables.scss';
+@import '../../animations.scss';
+
+.form {
+  background-color: $bg-color;
+  border: solid;
+  border-color: $primary-color;
+  position: relative;
+  left: -1000px;
+  animation: slide-right 1s ease-out;
+  animation-fill-mode: forwards;
+  padding: 20px;
+  width: 50%;
+}
+
+.form-label {
+  font-size: 20px;
+  color: $secondary-color;
+}
+
+.form-control {
+  background-color: transparent;
+  border: solid $primary-color;
+  color: $text-color;
+}
+
+.form-control:focus {
+  background-color: $bg-color;
+  color: $text-color;
+}
+
+.form-control::placeholder {
+  color: $text-color;
+}
+
+.submit-btn {
+  background-color: black;
+  border: solid $text-color;
+  color: $text-color;
+  transition: background-color 0.25s ease-out;
+  font-size: 20px;
+}
+
+.contact-container h1,
+.contact-container p {
+  opacity: 0;
+  animation: appear 0.5s ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+.form-content {
+  opacity: 0;
+  animation: appear 0.5s ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+.modal-footer p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.modal-footer p:hover {
+  cursor: pointer;
+  color: $secondary-color;
+}
+
+@media screen and (max-width: 768px) {
+  .form-label {
+    font-size: small;
+  }
+  .form-control {
+    font-size: small;
+  }
+  .submit-btn {
+    font-size: small;
+  }
+
+  .form {
+    width: 100%;
+  }
+}

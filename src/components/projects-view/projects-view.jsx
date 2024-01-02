@@ -1,4 +1,4 @@
-import { Row, Col, Card, Badge, Modal, Button, Image } from 'react-bootstrap';
+import { Row, Col, Card, Badge, Modal, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import './projects-view.scss';
@@ -14,7 +14,7 @@ const MyVerticallyCenteredModal = (props) => {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {props.project.name}
+          <h1>{props.project.name}</h1>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="d-flex justify-content-center flex-column">
@@ -24,12 +24,12 @@ const MyVerticallyCenteredModal = (props) => {
           <Image className="w-100" src={props.project.image} />
         )}
 
-        <h4 className="mt-3">Description</h4>
+        <h2 className="mt-3">Description</h2>
         <p>{props.project.description}</p>
 
-        <h4 className="mt-3">Technologies</h4>
+        <h2 className="mt-3">Technologies</h2>
 
-        <div>
+        <div className="mb-5">
           {props.project.skills
             ? props.project.skills.map((skill) => {
                 return (
@@ -40,21 +40,31 @@ const MyVerticallyCenteredModal = (props) => {
               })
             : null}
         </div>
-        <Link to={'/projects/' + props.project.name} className="me-1">
-          More Info
-        </Link>
-        <Link to={props.project.gh_link} target="blank" className="me-1">
-          Github
-        </Link>
-        {props.project.live_link ? (
-          <Link to={props.project.live_link} target="blank">
-            Website
+        <div className="d-flex justify-content-center">
+          <Link
+            to={'/projects/' + props.project.name}
+            className="me-5 custom-btn link-btn"
+          >
+            More Info
           </Link>
-        ) : null}
+          <Link
+            to={props.project.gh_link}
+            target="blank"
+            className="me-5 custom-btn link-btn"
+          >
+            Github
+          </Link>
+          {props.project.live_link ? (
+            <Link
+              to={props.project.live_link}
+              target="blank"
+              className="custom-btn link-btn"
+            >
+              Website
+            </Link>
+          ) : null}
+        </div>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
     </Modal>
   );
 };
@@ -67,6 +77,7 @@ const ProjectCardView = (props) => {
         props.setProject(props.project);
       }}
       style={{ max_height: '400px' }}
+      className={props.className}
     >
       {props.project.image_position === 'vertical' ? (
         <Card.Img
@@ -79,7 +90,7 @@ const ProjectCardView = (props) => {
       )}
 
       <Card.ImgOverlay className="d-flex flex-column justify-content-end ">
-        <div className="text-container justify-content-end d-flex flex-column ps-4 pe-4 pb-4">
+        <div className="proj-text-container justify-content-end d-flex flex-column ps-4 pe-4 pb-4">
           <Card.Title>{props.project.name}</Card.Title>
           <Card.Text>{props.project.short_description}</Card.Text>
           <div>
@@ -103,7 +114,7 @@ const ProjectsView = ({ projects }) => {
   const [modalShow, setModalShow] = useState(false);
   const [project, setProject] = useState({});
   return (
-    <div>
+    <div className="projects-container">
       <Row>
         <Col>
           <h1>Projects</h1>
@@ -112,12 +123,14 @@ const ProjectsView = ({ projects }) => {
 
       <Row>
         {projects.map((project) => {
+          const className = project.id % 2 === 0 ? 'card-right' : 'card-left';
           return (
             <Col sm={12} lg={6} className="mb-4" key={project.id}>
               <ProjectCardView
                 project={project}
                 setModalShow={setModalShow}
                 setProject={setProject}
+                className={className}
               />
             </Col>
           );

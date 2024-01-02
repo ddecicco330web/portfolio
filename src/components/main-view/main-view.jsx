@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  BrowserRouter,
-  Routes
-} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavigationBar from '../navigation-bar/navigation-bar';
 import AboutView from '../about-view/about-view';
 import { Container } from 'react-bootstrap';
@@ -17,16 +12,18 @@ import CaseStudyView from '../case-study-view/case-study-view';
 const MainView = () => {
   return (
     <BrowserRouter>
-      <NavigationBar />
-
+      <NavigationBar key="nav" />
       <Container className="page-content">
         <Routes>
           <Route path="/" element={<AboutView />} />
+
           <Route path="/about" element={<AboutView />} />
+
           <Route
             path="/projects"
             element={<ProjectsView projects={projects} />}
           />
+
           <Route path="/contact" element={<ContactView />} />
           {projects.map((project) => {
             return (
@@ -39,7 +36,6 @@ const MainView = () => {
           })}
         </Routes>
       </Container>
-
       <FooterView />
     </BrowserRouter>
   );
