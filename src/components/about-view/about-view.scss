@@ -1,3 +1,92 @@
-.about-img {
-  width: 100%;
+@import '../../variables.scss';
+
+.about-img-container {
+  border: solid;
+  border-color: $primary-color;
+  max-height: 375px;
+  max-width: 100%;
+  background-color: $bg-color;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  right: -1000px;
+  animation: about-img-slide 1s ease-out;
+  animation-fill-mode: forwards;
+  padding: 20px;
+}
+
+.about-img-container img {
+  max-height: 100%;
+  max-width: 100%;
+  opacity: 0;
+  animation: appear 0.5s ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+@keyframes about-img-slide {
+  100% {
+    right: 0px;
+  }
+}
+
+.about-text-container {
+  background-color: $bg-color;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  border: solid;
+  border-color: $primary-color;
+  position: relative;
+  left: -1000px;
+  animation: about-text-slide 1s ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes about-text-slide {
+  100% {
+    left: 0px;
+  }
+}
+
+.about-text-container h1 {
+  font-size: 72px;
+  opacity: 0;
+  animation: appear 0.5s ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+.about-text-container h2 {
+  font-size: 25px;
+  font-weight: 400;
+  opacity: 0;
+  animation: appear 0.5s ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+.about-text-container p {
+  font-weight: 300;
+  opacity: 0;
+  animation: appear 0.5s ease-out;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+
+.container-size {
+  width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+  .img-container {
+    justify-content: center;
+  }
 }

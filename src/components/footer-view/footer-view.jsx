@@ -1,4 +1,5 @@
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './footer-view.scss';
 
 const FooterView = () => {
@@ -6,18 +7,22 @@ const FooterView = () => {
     <Container className="fixed-bottom footer-container">
       <Row>
         <Col className="text-center">
-          <Button
-            href="Dominic_DeCicco_Resume.pdf"
+          <Link
+            to="Dominic_DeCicco_Resume.pdf"
             target="blank"
-            className="resume-btn"
+            className="resume-btn custom-btn"
           >
             My Resume
-          </Button>
+          </Link>
         </Col>
       </Row>
       <Row className="mb-1">
         <Col className="d-flex justify-content-center">
-          <a href="https://github.com/ddecicco330web" target="blank">
+          <a
+            className="icon-parent"
+            href="https://github.com/ddecicco330web"
+            target="blank"
+          >
             <div
               className="icon"
               style={{
@@ -30,7 +35,11 @@ const FooterView = () => {
               }}
             />
           </a>
-          <a href="https://www.linkedin.com/in/dominicdecicco/" target="blank">
+          <a
+            className="icon-parent"
+            href="https://www.linkedin.com/in/dominicdecicco/"
+            target="blank"
+          >
             <div
               className="icon"
               style={{
@@ -43,7 +52,11 @@ const FooterView = () => {
               }}
             />
           </a>
-          <a href="https://twitter.com/decicco330" target="blank">
+          <a
+            className="icon-parent"
+            href="https://twitter.com/decicco330"
+            target="blank"
+          >
             <div
               className="icon"
               style={{

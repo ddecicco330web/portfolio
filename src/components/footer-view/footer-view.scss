@@ -1,3 +1,19 @@
+@import '../../variables.scss';
+
+.footer-container {
+  background-color: black;
+  bottom: -100px;
+  animation: slide-up 0.8s ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide-up {
+  100% {
+    bottom: 0px;
+    z-index: 999;
+  }
+}
+
 .icon {
   mask-size: 100%;
   -webkit-mask-repeat: no-repeat;
@@ -5,28 +21,18 @@
   mask-position: center;
   width: 32px;
   height: 32px;
-  background-color: forestgreen;
+  background-color: $primary-color;
+  transition: background-color 0.25s ease-out;
+}
+
+.icon:hover {
+  background-color: $secondary-color;
+}
+
+.icon-parent:focus-within .icon {
+  background-color: $secondary-color;
 }
 
 .resume-btn {
-  background-color: rgba(0, 0, 0, 0);
-  color: forestgreen;
-  border: none;
-}
-
-.resume-btn:hover {
-  background-color: rgba(0, 0, 0, 0);
-  color: purple;
-  border: none;
-}
-
-.resume-btn::after {
-  content: '';
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: purple;
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
+  font-size: 26px;
 }
