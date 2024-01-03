@@ -8,7 +8,7 @@ const FooterView = () => {
       <Row>
         <Col className="text-center">
           <Link
-            to="Dominic_DeCicco_Resume.pdf"
+            to={process.env.PUBLIC_URL + '/Dominic_DeCicco_Resume.pdf'}
             target="blank"
             className="resume-btn custom-btn"
           >
