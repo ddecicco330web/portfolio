@@ -74,6 +74,31 @@ const CaseStudyView = ({ project }) => {
           <h2>Final Thoughts</h2>
           <p>{project.conclusion}</p>
         </div>
+
+        <div className="d-flex justify-content-center">
+          <Link
+            to={project.gh_link}
+            target="blank"
+            className="me-5 custom-btn link-btn"
+          >
+            Github
+          </Link>
+          {project.live_link ? (
+            <Link
+              to={project.live_link}
+              target="blank"
+              className="custom-btn link-btn"
+            >
+              Website
+            </Link>
+          ) : null}
+        </div>
+        <Link
+          to={process.env.PUBLIC_URL + '/projects'}
+          className="custom-btn link-btn"
+        >
+          {'<- Back to Projects'}
+        </Link>
       </Col>
     </Row>
   );
