@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/dominicdecicco.io/static/css/main.e73b1656.css",
-    "main.js": "/dominicdecicco.io/static/js/main.69ea4894.js",
-    "static/js/787.7da95b79.chunk.js": "/dominicdecicco.io/static/js/787.7da95b79.chunk.js",
-    "service-worker.js": "/dominicdecicco.io/service-worker.js",
-    "index.html": "/dominicdecicco.io/index.html",
-    "main.e73b1656.css.map": "/dominicdecicco.io/static/css/main.e73b1656.css.map",
-    "main.69ea4894.js.map": "/dominicdecicco.io/static/js/main.69ea4894.js.map",
-    "787.7da95b79.chunk.js.map": "/dominicdecicco.io/static/js/787.7da95b79.chunk.js.map"
+    "main.css": "/static/css/main.e73b1656.css",
+    "main.js": "/static/js/main.e9ea8271.js",
+    "static/js/787.7da95b79.chunk.js": "/static/js/787.7da95b79.chunk.js",
+    "service-worker.js": "/service-worker.js",
+    "index.html": "/index.html",
+    "main.e73b1656.css.map": "/static/css/main.e73b1656.css.map",
+    "main.e9ea8271.js.map": "/static/js/main.e9ea8271.js.map",
+    "787.7da95b79.chunk.js.map": "/static/js/787.7da95b79.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e73b1656.css",
-    "static/js/main.69ea4894.js"
+    "static/js/main.e9ea8271.js"
   ]
 }
