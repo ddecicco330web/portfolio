@@ -6,7 +6,10 @@ const CaseStudyView = ({ project }) => {
   return (
     <Row>
       <Col>
-        <Link to="/projects" className="custom-btn link-btn">
+        <Link
+          to={process.env.PUBLIC_URL + '/projects'}
+          className="custom-btn link-btn"
+        >
           {'<- Back to Projects'}
         </Link>
         <h1 className={'case-study-section appear'}>{project.name}</h1>
