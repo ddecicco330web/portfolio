@@ -6,19 +6,35 @@ const NavigationBar = () => {
   return (
     <Navbar expand="lg" variant="dark">
       <Container>
-        <Navbar.Brand className="custom-btn" as={Link} to="/">
+        <Navbar.Brand
+          className="custom-btn"
+          as={Link}
+          to={process.env.PUBLIC_URL}
+        >
           Dominic DeCicco
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
-            <Nav.Link className="custom-btn" as={Link} to="/about">
+            <Nav.Link
+              className="custom-btn"
+              as={Link}
+              to={process.env.PUBLIC_URL + '/about'}
+            >
               About
             </Nav.Link>
-            <Nav.Link className="custom-btn" as={Link} to="/projects">
+            <Nav.Link
+              className="custom-btn"
+              as={Link}
+              to={process.env.PUBLIC_URL + '/projects'}
+            >
               Projects
             </Nav.Link>
-            <Nav.Link className="custom-btn" as={Link} to="/contact">
+            <Nav.Link
+              className="custom-btn"
+              as={Link}
+              to={process.env.PUBLIC_URL + '/contact'}
+            >
               Contact
             </Nav.Link>
           </Nav>

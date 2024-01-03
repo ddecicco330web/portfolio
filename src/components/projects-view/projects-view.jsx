@@ -19,9 +19,15 @@ const MyVerticallyCenteredModal = (props) => {
       </Modal.Header>
       <Modal.Body className="d-flex justify-content-center flex-column">
         {props.project.image_position === 'vertical' ? (
-          <Image className="img-vertical" src={props.project.image} />
+          <Image
+            className="img-vertical"
+            src={process.env.PUBLIC_URL + '/' + props.project.image}
+          />
         ) : (
-          <Image className="w-100" src={props.project.image} />
+          <Image
+            className="w-100"
+            src={process.env.PUBLIC_URL + '/' + props.project.image}
+          />
         )}
 
         <h2 className="mt-3">Description</h2>
@@ -42,7 +48,7 @@ const MyVerticallyCenteredModal = (props) => {
         </div>
         <div className="d-flex justify-content-center">
           <Link
-            to={'/projects/' + props.project.name}
+            to={process.env.PUBLIC_URL + '/projects/' + props.project.name}
             className="me-5 custom-btn link-btn"
           >
             More Info
@@ -82,11 +88,14 @@ const ProjectCardView = (props) => {
       {props.project.image_position === 'vertical' ? (
         <Card.Img
           className="img-vertical"
-          src={props.project.image}
+          src={process.env.PUBLIC_URL + '/' + props.project.image}
           alt={props.project.name}
         />
       ) : (
-        <Card.Img src={props.project.image} alt={props.project.name} />
+        <Card.Img
+          src={process.env.PUBLIC_URL + '/' + props.project.image}
+          alt={props.project.name}
+        />
       )}
 
       <Card.ImgOverlay className="d-flex flex-column justify-content-end ">

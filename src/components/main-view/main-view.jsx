@@ -15,20 +15,26 @@ const MainView = () => {
       <NavigationBar key="nav" />
       <Container className="page-content">
         <Routes>
-          <Route path="/" element={<AboutView />} />
-
-          <Route path="/about" element={<AboutView />} />
+          <Route path={process.env.PUBLIC_URL} element={<AboutView />} />
 
           <Route
-            path="/projects"
+            path={process.env.PUBLIC_URL + '/about'}
+            element={<AboutView />}
+          />
+
+          <Route
+            path={process.env.PUBLIC_URL + '/projects'}
             element={<ProjectsView projects={projects} />}
           />
 
-          <Route path="/contact" element={<ContactView />} />
+          <Route
+            path={process.env.PUBLIC_URL + '/contact'}
+            element={<ContactView />}
+          />
           {projects.map((project) => {
             return (
               <Route
-                path={`/projects/${project.name}`}
+                path={`${process.env.PUBLIC_URL}/projects/${project.name}`}
                 element={<CaseStudyView project={project} />}
                 key={project.id}
               />

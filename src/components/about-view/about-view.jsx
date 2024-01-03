@@ -27,7 +27,7 @@ const AboutView = () => {
       <Col sm={4}>
         <div className="about-img-container">
           <Image
-            src="imgs/dominic-decicco-potrait.jpg"
+            src={process.env.PUBLIC_URL + '/imgs/dominic-decicco-potrait.jpg'}
             alt="Dominic DeCicco photo"
           />
         </div>
