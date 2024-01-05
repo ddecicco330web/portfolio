@@ -59,7 +59,7 @@ const projects = [
     short_description:
       'An app that allows users to chat with each other in real time.',
     description:
-      'The purpose of this project was to develop an mobile app using React Native and Firebase.',
+      'The purpose of this project was to develop a mobile app using React Native and Firebase.',
     image: 'imgs/Chat_app.jpg',
     image_position: 'vertical',
     skills: ['React Native', 'Javascript', 'CSS', 'Firebase'],
