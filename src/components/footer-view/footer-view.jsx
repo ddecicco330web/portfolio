@@ -52,23 +52,6 @@ const FooterView = () => {
               }}
             />
           </a>
-          <a
-            className="icon-parent"
-            href="https://twitter.com/decicco330"
-            target="blank"
-          >
-            <div
-              className="icon"
-              style={{
-                maskImage: `url(${
-                  process.env.PUBLIC_URL + '/imgs/twitter_icon.svg'
-                })`,
-                WebkitMaskImage: `url(${
-                  process.env.PUBLIC_URL + '/imgs/twitter_icon.svg'
-                })`
-              }}
-            />
-          </a>
         </Col>
       </Row>
     </Container>
