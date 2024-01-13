@@ -12,7 +12,7 @@ import CaseStudyView from '../case-study-view/case-study-view';
 const MainView = () => {
   return (
     <BrowserRouter>
-      <NavigationBar key="nav" />
+      <NavigationBar />
       <Container className="page-content">
         <Routes>
           <Route path={process.env.PUBLIC_URL} element={<AboutView />} />
