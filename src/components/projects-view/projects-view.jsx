@@ -47,12 +47,14 @@ const MyVerticallyCenteredModal = (props) => {
             : null}
         </div>
         <div className="d-flex justify-content-center">
-          <Link
-            to={process.env.PUBLIC_URL + '/projects/' + props.project.name}
-            className="me-5 custom-btn link-btn"
-          >
-            More Info
-          </Link>
+          {props.project.case_study ? (
+            <Link
+              to={process.env.PUBLIC_URL + '/projects/' + props.project.name}
+              className="me-5 custom-btn link-btn"
+            >
+              More Info
+            </Link>
+          ) : null}
           <Link
             to={props.project.gh_link}
             target="blank"

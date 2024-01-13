@@ -11,6 +11,7 @@ const projects = [
     skills: ['React', 'React Bootstrap', 'Redux', 'JSX'],
     gh_link: 'https://github.com/ddecicco330web/myFlix-client',
     live_link: 'https://myflix330.netlify.app/login',
+    case_study: true,
     case_study_imgs: [
       'imgs/myFlix-React/main_view.png',
       'imgs/myFlix-React/models.png',
@@ -64,6 +65,7 @@ const projects = [
     image_position: 'vertical',
     skills: ['React Native', 'Javascript', 'CSS', 'Firebase'],
     gh_link: 'https://github.com/ddecicco330web/chat',
+    case_study: false,
     case_study_imgs: ['', '', ''],
     overview: '',
     purpose: '',
