@@ -11,11 +11,6 @@
   animation-fill-mode: forwards;
 }
 
-.hide-nav {
-  opacity: 0;
-  transition: 0.3s ease-in-out;
-}
-
 .navbar-brand {
   font-size: 32px;
 }
@@ -26,4 +21,13 @@
 
 .navbar-toggler {
   border-color: $primary-color;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    animation: none;
+  }
 }
