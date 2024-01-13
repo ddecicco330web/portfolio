@@ -1,10 +1,12 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './navigation-bar.scss';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const NavigationBar = () => {
+  const [expanded, setExpanded] = useState(false);
   return (
-    <Navbar expand="lg" variant="dark">
+    <Navbar expanded={expanded} expand="md" variant="dark">
       <Container>
         <Navbar.Brand
           className="custom-btn"
@@ -13,30 +15,33 @@ const NavigationBar = () => {
         >
           Dominic DeCicco
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav>
-            <Nav.Link
-              className="custom-btn"
-              as={Link}
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          onClick={() => setExpanded(!expanded)}
+        />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className=" w-100 d-flex justify-content-end">
+            <Link
+              className="nav-link custom-btn"
               to={process.env.PUBLIC_URL + '/about'}
+              onClick={() => setExpanded(false)}
             >
               About
-            </Nav.Link>
-            <Nav.Link
-              className="custom-btn"
-              as={Link}
+            </Link>
+            <Link
+              className="nav-link custom-btn"
               to={process.env.PUBLIC_URL + '/projects'}
+              onClick={() => setExpanded(false)}
             >
               Projects
-            </Nav.Link>
-            <Nav.Link
-              className="custom-btn"
-              as={Link}
+            </Link>
+            <Link
+              className="nav-link custom-btn"
               to={process.env.PUBLIC_URL + '/contact'}
+              onClick={() => setExpanded(false)}
             >
               Contact
-            </Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
