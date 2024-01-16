@@ -2,7 +2,7 @@
 On this website, you can view my projects, view my resume, visit my socials, and send me a message.
 
 ## Live Site
-[dominicdecicco.io](dominicdecicco.io)
+[dominicdecicco.io](https://www.dominicdecicco.io)
 
 ## Technologies Used
 - React
