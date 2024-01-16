@@ -43,7 +43,6 @@ const ContactView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
     emailjs
       .sendForm(
         'service_w4iphl5',
@@ -53,7 +52,6 @@ const ContactView = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
           setModalShow(true);
           setModalMessage('Your message has been sent!');
           setFormData({
@@ -63,7 +61,6 @@ const ContactView = () => {
           });
         },
         (error) => {
-          console.log(error.text);
           setModalShow(true);
           setModalMessage('There was an error sending your message.');
         }
