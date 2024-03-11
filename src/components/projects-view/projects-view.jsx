@@ -12,10 +12,18 @@ const MyVerticallyCenteredModal = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title id="contained-modal-title-vcenter">
           <h1>{props.project.name}</h1>
         </Modal.Title>
+        <button
+          className="custom-btn close-btn link-btn"
+          onClick={() => {
+            props.onHide();
+          }}
+        >
+          X
+        </button>
       </Modal.Header>
       <Modal.Body className="d-flex justify-content-center flex-column">
         {props.project.image_position === 'vertical' ? (

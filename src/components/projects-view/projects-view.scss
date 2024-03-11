@@ -79,6 +79,11 @@
   font-size: 20px;
 }
 
+.close-btn {
+  background-color: transparent;
+  border: none;
+}
+
 @media screen and (max-width: 768px) {
   .card-title {
     font-size: small;

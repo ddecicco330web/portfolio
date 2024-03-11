@@ -1,6 +1,33 @@
 const projects = [
   {
     id: 1,
+    name: 'Recipes',
+    short_description:
+      'A Django app that allows users to search for and create recipes.',
+    description:
+      'The purpose of this project was to learn how to use Django to create a web app.',
+    image: 'imgs/Recipe_App.png',
+    image_position: 'horizontal',
+    skills: ['Django', 'Python', 'CSS', 'AWS S3'],
+    gh_link: 'https://github.com/ddecicco330web/django-recipe-app',
+    case_study: false,
+    case_study_imgs: ['', '', ''],
+    overview: '',
+    purpose: '',
+    objective: '',
+    approach: [
+      {
+        title: '',
+        description: '',
+        steps: ['', '', '', '']
+      }
+    ],
+    challenges: '',
+    improvements: '',
+    conclusion: ''
+  },
+  {
+    id: 2,
     name: 'myFlix (React)',
     short_description:
       'An app that allows users to search for movies and add them to a list of favorites.',
@@ -55,7 +82,7 @@ const projects = [
       "Overall, I'm very proud of this project because it was my first time building an API from scratch. I also had a lot of fun using React and Redux for the first time. Adding little things like movie trailers made me feel a lot of excitement because it was satisfying to be able to make my website more like one from a bigger company like IMDB. One thing I learned that I need to improve on is making the UI more pleasing to look at. This project makes me look forward to making more React projects."
   },
   {
-    id: 2,
+    id: 3,
     name: 'chat',
     short_description:
       'An app that allows users to chat with each other in real time.',

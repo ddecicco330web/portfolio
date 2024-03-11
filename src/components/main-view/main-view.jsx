@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import NavigationBar from '../navigation-bar/navigation-bar';
 import AboutView from '../about-view/about-view';
 import { Container } from 'react-bootstrap';
@@ -11,39 +11,34 @@ import CaseStudyView from '../case-study-view/case-study-view';
 
 const MainView = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <NavigationBar />
       <Container className="page-content">
         <Routes>
           <Route path={process.env.PUBLIC_URL} element={<AboutView />} />
 
-          <Route
-            path={process.env.PUBLIC_URL + '/about'}
-            element={<AboutView />}
-          />
+          <Route path={'/about'} element={<AboutView />} />
 
-          <Route
-            path={process.env.PUBLIC_URL + '/projects'}
-            element={<ProjectsView projects={projects} />}
-          />
-
-          <Route
-            path={process.env.PUBLIC_URL + '/contact'}
-            element={<ContactView />}
-          />
           {projects.map((project) => {
             return (
               <Route
-                path={`${process.env.PUBLIC_URL}/projects/${project.name}`}
+                path={`/projects/${project.name}`}
                 element={<CaseStudyView project={project} />}
                 key={project.id}
               />
             );
           })}
+
+          <Route
+            path={'/projects'}
+            element={<ProjectsView projects={projects} />}
+          />
+
+          <Route path={'/contact'} element={<ContactView />} />
         </Routes>
       </Container>
       <FooterView />
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
