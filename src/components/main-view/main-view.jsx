@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import NavigationBar from '../navigation-bar/navigation-bar';
 import AboutView from '../about-view/about-view';
 import { Container } from 'react-bootstrap';
@@ -11,7 +11,7 @@ import CaseStudyView from '../case-study-view/case-study-view';
 
 const MainView = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <NavigationBar />
       <Container className="page-content">
         <Routes>
@@ -35,10 +35,12 @@ const MainView = () => {
           />
 
           <Route path={'/contact'} element={<ContactView />} />
+
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Container>
       <FooterView />
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
