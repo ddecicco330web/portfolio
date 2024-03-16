@@ -10,6 +10,7 @@ const projects = [
     image_position: 'horizontal',
     skills: ['Django', 'Python', 'CSS', 'AWS S3'],
     gh_link: 'https://github.com/ddecicco330web/django-recipe-app',
+    live_link: 'https://recipes330-b394d7d440dc.herokuapp.com/',
     case_study: false,
     case_study_imgs: ['', '', ''],
     overview: '',
