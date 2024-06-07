@@ -1,7 +1,6 @@
 import { Row, Col, Card, Badge, Modal, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import './projects-view.scss';
 
 const MyVerticallyCenteredModal = (props) => {
   return (

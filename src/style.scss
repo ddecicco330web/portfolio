@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+}
+
+.navbar {
+  background: transparent;
+  position: fixed;
+  height: 100px;
+  width: auto;
+  width: 100%;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+
+.icon {
+  background-color: black;
+  width: 32px;
+  height: 32px;
+  mask-position: center;
+  mask-size: cover;
+}
+
+.menu-icon {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  mask-size: cover;
+}
+
+.fixed {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#17d396),
+    to(#07f7f7)
+  );
+  background: linear-gradient(to right, #17d396, #07f7f7);
+  -webkit-box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.27);
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.27);
+  padding: 20px 0;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  height: 75px;
+}
+
+#main-modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.main-modal {
+  display: flex;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  animation: 0.5s forwards;
+  z-index: 9999;
+}
+
+.main-modal.fadeIn {
+  animation-name: fadeIn;
+}
+
+.main-modal.fadeOut {
+  animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    width: 80%;
+    height: 80%;
+  }
+  to {
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+  }
+  to {
+    opacity: 0;
+    width: 80%;
+    height: 80%;
+  }
+}

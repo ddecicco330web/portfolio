@@ -1,51 +1,92 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import './navigation-bar.scss';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import MainModalView from '../main-modal-view/main-modal-view';
 
 const NavigationBar = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+    setFadeOut(false);
+  };
+  const handleCloseModal = () => {
+    setFadeOut(true);
+  };
+  const handleAnimationEnd = () => (fadeOut ? setShowModal(false) : null);
+
   return (
-    <Navbar expanded={expanded} expand="md" variant="dark">
-      <Container>
-        <Navbar.Brand
-          className="custom-btn"
-          as={Link}
-          to={process.env.PUBLIC_URL}
-        >
-          Dominic DeCicco
-        </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="basic-navbar-nav"
-          onClick={() => setExpanded(!expanded)}
-        />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className=" w-100 d-flex justify-content-end">
-            <Link
-              className="nav-link custom-btn"
-              to={process.env.PUBLIC_URL + '/about'}
-              onClick={() => setExpanded(false)}
+    <>
+      <Navbar id="header">
+        <Container fluid>
+          <Navbar.Brand
+            className="navbar-brand"
+            as={Link}
+            to={process.env.PUBLIC_URL}
+          >
+            Dominic DeCicco
+          </Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link
+              as={Link}
+              to="https://www.linkedin.com/in/dominicdecicco/"
+              target="blank"
             >
-              About
-            </Link>
-            <Link
-              className="nav-link custom-btn"
-              to={process.env.PUBLIC_URL + '/projects'}
-              onClick={() => setExpanded(false)}
+              <div
+                className="icon"
+                style={{
+                  maskImage: `url(${
+                    process.env.PUBLIC_URL + '/imgs/linkedin_icon.svg'
+                  })`,
+                  WebkitMaskImage: `url(${
+                    process.env.PUBLIC_URL + '/imgs/linkedin_icon.svg'
+                  })`
+                }}
+              />
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="https://github.com/ddecicco330web"
+              target="blank"
             >
-              Projects
-            </Link>
-            <Link
-              className="nav-link custom-btn"
-              to={process.env.PUBLIC_URL + '/contact'}
-              onClick={() => setExpanded(false)}
-            >
-              Contact
-            </Link>
+              <div
+                className="icon"
+                style={{
+                  maskImage: `url(${
+                    process.env.PUBLIC_URL + '/imgs/github_icon.svg'
+                  })`,
+                  WebkitMaskImage: `url(${
+                    process.env.PUBLIC_URL + '/imgs/github_icon.svg'
+                  })`
+                }}
+              />
+            </Nav.Link>
           </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          <Nav className="ml-auto">
+            <div
+              className="icon menu-icon"
+              onClick={handleShowModal}
+              style={{
+                maskImage: `url(${
+                  process.env.PUBLIC_URL + '/imgs/menu_icon.svg'
+                })`,
+                WebkitMaskImage: `url(${
+                  process.env.PUBLIC_URL + '/imgs/menu_icon.svg'
+                })`
+              }}
+            />
+          </Nav>
+        </Container>
+      </Navbar>
+      {showModal ? (
+        <MainModalView
+          fadeOut={fadeOut}
+          handleClose={handleCloseModal}
+          handleAnimationEnd={handleAnimationEnd}
+        />
+      ) : null}
+    </>
   );
 };
 

@@ -1,5 +1,4 @@
 import { Row, Image, Col } from 'react-bootstrap';
-import './about-view.scss';
 
 const AboutView = () => {
   return (

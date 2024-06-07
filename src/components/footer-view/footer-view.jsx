@@ -1,6 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './footer-view.scss';
 
 const FooterView = () => {
   return (

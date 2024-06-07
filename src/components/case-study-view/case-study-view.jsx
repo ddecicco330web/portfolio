@@ -1,5 +1,4 @@
 import { Row, Col, Image } from 'react-bootstrap';
-import './case-study-view.scss';
 import { Link } from 'react-router-dom';
 
 const CaseStudyView = ({ project }) => {

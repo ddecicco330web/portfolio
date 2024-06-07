@@ -1,7 +1,6 @@
 import { Col, Row, Form, Button, Modal } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
-import './contact-view.scss';
 
 const MessageModal = (props) => {
   return (

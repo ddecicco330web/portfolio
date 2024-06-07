@@ -6,17 +6,23 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@emailjs/browser": "^3.11.0",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.2",
     "emailjs-com": "^3.2.0",
+    "node-sass": "^9.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
     "react-scripts": "^5.0.1",
+    "resolve-url-loader": "^5.0.0",
     "sass": "^1.69.6",
+    "svgo": "^3.3.2",
     "web-vitals": "^2.1.4",
     "workbox-background-sync": "^6.6.0",
     "workbox-broadcast-update": "^6.6.0",
@@ -37,7 +43,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preinstall": "npx npm-force-resolutions"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +65,16 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "npm-force-resolutions": "^0.0.10",
+    "sass-loader": "^14.2.1"
+  },
+  "resolutions": {
+    "nth-check": "2.0.1",
+    "css-select": "^4.1.3",
+    "svgo": "2.8.0",
+    "postcss": "8.4.31",
+    "tough-cookie": "<4.1.3",
+    "request": "<2.88.2"
   }
 }
