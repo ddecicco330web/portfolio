@@ -17,7 +17,7 @@ const NavigationBar = () => {
   const handleAnimationEnd = () => (fadeOut ? setShowModal(false) : null);
 
   return (
-    <>
+    <header>
       <Navbar id="header">
         <Container fluid>
           <Navbar.Brand
@@ -86,7 +86,7 @@ const NavigationBar = () => {
           handleAnimationEnd={handleAnimationEnd}
         />
       ) : null}
-    </>
+    </header>
   );
 };
 
