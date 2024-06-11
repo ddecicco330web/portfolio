@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import MainModalView from '../main-modal-view/main-modal-view';
+import NavModalView from '../nav-modal-view/nav-modal-view';
 
 const NavigationBar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,7 +18,7 @@ const NavigationBar = () => {
 
   return (
     <header>
-      <Navbar id="header">
+      <Navbar id="header" variant="dark">
         <Container fluid>
           <Navbar.Brand
             className="navbar-brand"
@@ -80,7 +80,7 @@ const NavigationBar = () => {
         </Container>
       </Navbar>
       {showModal ? (
-        <MainModalView
+        <NavModalView
           fadeOut={fadeOut}
           handleClose={handleCloseModal}
           handleAnimationEnd={handleAnimationEnd}
