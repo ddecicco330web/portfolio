@@ -12,7 +12,7 @@ const MainView = () => {
   return (
     <BrowserRouter>
       <NavigationBar />
-      <Container fluid>
+      <Container fluid className="p-0">
         <Routes>
           <Route path={process.env.PUBLIC_URL} element={<HomeView />} />
 

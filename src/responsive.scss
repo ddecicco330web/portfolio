@@ -1,11 +1,33 @@
 @media screen and (max-width: 768px) {
-  .home-content h1 {
+  .intro-content h1 {
     font-size: 80px;
   }
-  .home-content h3 {
+  .intro-content h3 {
     font-size: 30px;
   }
-  .home-content p {
+  .intro-content p {
     font-size: 20px;
+  }
+
+  .about-img-resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+
+  .resume-btn {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .about-bg {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .about-img::after {
+    display: none;
   }
 }
