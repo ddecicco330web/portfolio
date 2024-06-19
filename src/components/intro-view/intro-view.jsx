@@ -3,8 +3,8 @@ import { Row, Col } from 'react-bootstrap';
 const IntroView = () => {
   return (
     <section id="intro">
-      <div
-        className="intro-bg"
+      <Row
+        className="h-100vh w-100 d-flex align-items-center"
         style={{
           backgroundImage: `linear-gradient(
                 to right,
@@ -16,18 +16,14 @@ const IntroView = () => {
           backgroundPosition: 'top'
         }}
       >
-        <Row>
-          <Col>
-            <div className="intro-content">
-              <h1>Hello!</h1>
-              <h3>
-                <span>I'm</span> Dominic DeCicco
-              </h3>
-              <p>Fullstack Developer</p>
-            </div>
-          </Col>
-        </Row>
-      </div>
+        <Col className="intro-content">
+          <h1>Hello!</h1>
+          <h3>
+            <span>I'm</span> Dominic DeCicco
+          </h3>
+          <p>Fullstack Developer</p>
+        </Col>
+      </Row>
     </section>
   );
 };
