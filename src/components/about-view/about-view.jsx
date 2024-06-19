@@ -3,7 +3,7 @@ import { Row, Image, Col } from 'react-bootstrap';
 const AboutView = () => {
   return (
     <section id="about">
-      <Row className="about-bg">
+      <Row className="about-bg dark-bg">
         <Col md={6} sm={12} className="about-img-resume">
           <div className="about-img">
             <Image
@@ -11,7 +11,7 @@ const AboutView = () => {
               alt="Dominic DeCicco photo"
             />
           </div>
-          <div className="resume-btn">
+          <div className="resume-btn gradient-bg">
             <a
               href={process.env.PUBLIC_URL + '/Dominic_DeCicco_Resume.pdf'}
               target="blank"
@@ -22,7 +22,7 @@ const AboutView = () => {
         </Col>
         <Col className="about-content" md={6} xs={12}>
           <div className="section-title">
-            <h2>ABOUT ME</h2>
+            <h2 className="gradient-bg">ABOUT ME</h2>
           </div>
           <p>
             Hi, I’m Dominic, a web developer excited about technology and media.
@@ -36,13 +36,14 @@ const AboutView = () => {
           </p>
           <ul className="profile">
             <li>
-              <span>CITY:</span> New York, NY
+              <span className="text-primary-color">CITY:</span> New York, NY
             </li>
             <li>
-              <span>PHONE:</span> 347-697-2081
+              <span className="text-primary-color">PHONE:</span> 347-697-2081
             </li>
             <li>
-              <span>E-MAIL:</span> ddecicco330web@gmail.com
+              <span className="text-primary-color">E-MAIL:</span>{' '}
+              ddecicco330web@gmail.com
             </li>
           </ul>
         </Col>

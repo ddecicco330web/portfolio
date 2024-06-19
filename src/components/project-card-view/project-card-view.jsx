@@ -10,13 +10,12 @@ const ProjectCardView = ({ project }) => {
         style={{ objectFit: 'cover', height: '100%', width: '100%' }}
       />
       <div className="project-overlay w-100 h-100">
-        <div className="project-overlay-bg"></div>
         <div className="project-overlay-content">
           <div className="project-links">
             <Link to={project.gh_link} target="blank" className="project-link">
-              <div className="icon-container">
+              <div className="icon-container ">
                 <div
-                  className="icon"
+                  className="icon primary-bg"
                   style={{
                     maskImage: `url(${process.env.PUBLIC_URL}/imgs/github_icon.svg)`,
                     WebkitMaskImage: `url(${process.env.PUBLIC_URL}/imgs/github_icon.svg)`,
@@ -34,7 +33,7 @@ const ProjectCardView = ({ project }) => {
               >
                 <div className="icon-container">
                   <div
-                    className="icon"
+                    className="icon primary-bg"
                     style={{
                       maskImage: `url(${process.env.PUBLIC_URL}/imgs/link_chain_icon.svg)`,
                       WebkitMaskImage: `url(${process.env.PUBLIC_URL}/imgs/link_chain_icon.svg)`,
@@ -50,7 +49,7 @@ const ProjectCardView = ({ project }) => {
             <h4>{project.name}</h4>
             <p>
               {project.skills.map((skill, index) => (
-                <span key={index}>
+                <span key={index} className="text-primary-color">
                   {skill}
                   {index < project.skills.length - 1 ? ',' : null}{' '}
                 </span>
