@@ -1,0 +1,509 @@
+@import 'animation.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+$darkBG: #22252c;
+$gradientStart: #17d396;
+$gradientEnd: #07f7f7;
+$navModalColor: #000;
+$primaryColor: #00d7bb;
+$btnShadowColor: rgba(22, 213, 156, 0.7);
+$darkTransparentBG: rgba(0, 0, 0, 0.2);
+$darkShadowColor: #3e3e3e;
+$lightTransparentBG: rgb(255, 255, 255, 0.9);
+$formColor: #ccc;
+$scrollbarBG: #313741;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #fff;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.section-padding {
+  padding: 120px 0;
+}
+
+.section-title h2 {
+  font-size: 42px;
+  font-weight: 800;
+}
+
+.row {
+  padding: 0;
+  margin: 0;
+}
+
+.col {
+  padding: 0;
+  margin: 0;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.dark-bg {
+  background-color: $darkBG;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, $gradientStart, $gradientEnd);
+}
+
+.primary-bg {
+  background-color: $primaryColor;
+}
+
+.text-primary-color {
+  color: $primaryColor;
+}
+
+.section-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 35px 0;
+
+  h2 {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.github-icon {
+  mask-image: url('../public/imgs/github_icon.svg');
+}
+
+.link-icon {
+  mask-image: url('../public/imgs/link_chain_icon.svg');
+}
+
+// Navbar
+//////////////
+.navbar {
+  background: transparent;
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  padding-left: 35px;
+  z-index: 999;
+  transition: 0.4s ease 0s;
+  transition-property: height, padding;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  mask-size: cover;
+}
+
+.menu-icon {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+.fixed {
+  padding: 20px 0;
+  height: 75px;
+}
+
+.navbar::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.27);
+  background: linear-gradient(to right, $gradientStart, $gradientEnd);
+  opacity: 0;
+  transition: opacity 0.4s ease 0s;
+  z-index: -1;
+}
+
+.navbar.fixed::before {
+  opacity: 1;
+}
+
+// Nav Modal
+//////////////
+#nav-modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.nav-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $navModalColor;
+  width: 100%;
+  height: 100%;
+  animation: 0.5s forwards;
+  z-index: 9999;
+
+  ul {
+    list-style: none;
+    text-align: center;
+  }
+
+  li {
+    margin-bottom: 25px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 30px;
+    font-weight: 600;
+  }
+}
+
+.nav-modal.fadeIn {
+  animation-name: fadeIn;
+}
+
+.nav-modal.fadeOut {
+  animation-name: fadeOut;
+}
+
+// Intro
+.intro-bg {
+  background-image: linear-gradient(
+      to right,
+      rgba(23, 211, 151, 0.8),
+      rgba(7, 247, 247, 0.8)
+    ),
+    url('../public/imgs/home-img.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top;
+}
+
+.intro-content {
+  padding: 35px;
+  padding-top: 105px;
+
+  h1 {
+    font-size: 120px;
+  }
+
+  h3 {
+    font-size: 50px;
+    font-weight: 800;
+
+    span {
+      font-weight: 400;
+    }
+  }
+
+  p {
+    font-size: 25px;
+  }
+}
+
+// About
+.about-bg {
+  padding: 120px 75px;
+}
+
+.about-img {
+  margin-top: 54px;
+  height: 385px;
+  z-index: 1;
+  position: relative;
+
+  img {
+    height: 100%;
+  }
+}
+
+.about-img::after {
+  border: 7px solid $primaryColor;
+  content: '';
+  height: 100%;
+  left: 50px;
+  position: absolute;
+  top: -45px;
+  width: 60%;
+  z-index: -1;
+}
+
+.about-content {
+  display: block;
+  text-align: left;
+}
+
+.profile {
+  list-style: none;
+
+  li {
+    font-size: 17.5px;
+    margin-bottom: 16px;
+
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.resume-btn {
+  margin-top: 30px;
+  margin-left: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12em;
+
+  a {
+    box-shadow: 0 0 20px $btnShadowColor;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: inherit;
+    font-weight: 600;
+    display: inline-block;
+    text-decoration: none;
+  }
+}
+
+// Projects
+#projects {
+  scroll-margin-top: 100px;
+}
+
+.projects-content {
+  padding: 100px 120px;
+}
+
+// Project Card
+.project-card-img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.project-card {
+  width: 300px;
+  height: 300px;
+}
+
+.project-overlay {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.project-overlay:hover,
+.project-overlay:focus {
+  background-color: $darkTransparentBG;
+  opacity: 1;
+  box-shadow: 1px 6px 24px $darkShadowColor;
+
+  .project-overlay-content::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.project-overlay-content::before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  background-color: $lightTransparentBG;
+  transition: all 0.4s;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: -1;
+}
+
+.project-overlay-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 30px;
+  width: 100%;
+  height: 100%;
+
+  h4 {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-weight: 600;
+  }
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  a {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+.icon-container {
+  border: $primaryColor 1px solid;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+
+  .icon {
+    transition: 0.4s;
+  }
+}
+
+.icon-container:hover {
+  background-color: $primaryColor;
+
+  .icon {
+    background-color: #fff;
+  }
+}
+
+// Contact
+.contact-form-btn {
+  background-color: transparent;
+  color: $primaryColor;
+  border-image: linear-gradient(to right, $gradientStart, $gradientEnd);
+  border-image-width: 1px;
+  border-image-slice: 1;
+  padding: 13px 50px;
+  transition: all 0.3s ease 0;
+}
+
+.contact-form-btn:focus,
+.contact-form-btn:hover {
+  background-color: $primaryColor;
+  font-weight: 600;
+  color: $darkBG;
+  box-shadow: 0 1px 20px $btnShadowColor;
+}
+
+.form-control {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid $formColor;
+  transition: all 0.4s;
+  color: $formColor;
+}
+
+.form-control:focus,
+.form-control.is-invalid:focus {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid $primaryColor;
+  box-shadow: none;
+  color: $formColor;
+}
+
+.form-control.is-invalid {
+  border-bottom: 2px solid $formColor;
+  box-shadow: none;
+  background-image: none;
+}
+
+.form-control:focus + span {
+  color: $primaryColor;
+  font-size: 11px;
+  top: -3px;
+}
+
+.form-group {
+  position: relative;
+
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: $formColor;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: all 0.4s;
+    font-size: 14px;
+  }
+}
+
+.invalid-feedback {
+  color: $primaryColor;
+}
+
+.message-container {
+  background-color: #313741;
+  color: #02cfb4;
+  font-weight: 300;
+  border: none;
+  padding: 10px;
+}
+
+.close-btn,
+.close-btn:hover,
+.close-btn:focus {
+  padding: 0;
+  margin: 0;
+  width: 25px;
+  height: 25px;
+  margin-right: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background: $primaryColor;
+  border: none;
+  font-weight: 700;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-button {
+  display: block;
+  height: 0px;
+  border-radius: 0px;
+  background-color: $scrollbarBG;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $primaryColor;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $scrollbarBG;
+}

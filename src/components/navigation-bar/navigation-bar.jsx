@@ -1,51 +1,91 @@
-import { Container, Nav, Navbar } from 'react-bootstrap';
-import './navigation-bar.scss';
+import React, { useState, useEffect } from 'react';
+import { Container, Nav, Navbar, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import NavModalView from '../nav-modal-view/nav-modal-view';
 
 const NavigationBar = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+    setFadeOut(false);
+  };
+  const handleCloseModal = () => {
+    setFadeOut(true);
+  };
+  const handleAnimationEnd = () => (fadeOut ? setShowModal(false) : null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100 && !isScrolled) {
+        setIsScrolled(true);
+      } else if (window.scrollY < 100 && isScrolled) {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isScrolled]);
+
   return (
-    <Navbar expanded={expanded} expand="md" variant="dark">
-      <Container>
-        <Navbar.Brand
-          className="custom-btn"
-          as={Link}
-          to={process.env.PUBLIC_URL}
-        >
-          Dominic DeCicco
-        </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="basic-navbar-nav"
-          onClick={() => setExpanded(!expanded)}
-        />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className=" w-100 d-flex justify-content-end">
-            <Link
-              className="nav-link custom-btn"
-              to={process.env.PUBLIC_URL + '/about'}
-              onClick={() => setExpanded(false)}
+    <header>
+      <Navbar id="header" variant="dark" className={isScrolled ? 'fixed' : ''}>
+        <Container fluid>
+          <Navbar.Brand
+            className="navbar-brand"
+            as={Link}
+            to={process.env.PUBLIC_URL}
+          >
+            Dominic DeCicco
+          </Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link
+              as={Link}
+              to="https://www.linkedin.com/in/dominicdecicco/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              About
-            </Link>
-            <Link
-              className="nav-link custom-btn"
-              to={process.env.PUBLIC_URL + '/projects'}
-              onClick={() => setExpanded(false)}
+              <div className="icon">
+                <Image
+                  src={process.env.PUBLIC_URL + '/imgs/linkedin_icon.svg'}
+                />
+              </div>
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="https://github.com/ddecicco330web"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Projects
-            </Link>
-            <Link
-              className="nav-link custom-btn"
-              to={process.env.PUBLIC_URL + '/contact'}
-              onClick={() => setExpanded(false)}
-            >
-              Contact
-            </Link>
+              <div className="icon">
+                <Image src={process.env.PUBLIC_URL + '/imgs/github_icon.svg'} />
+              </div>
+            </Nav.Link>
           </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          <Nav className="ml-auto">
+            <div className="icon menu-icon" onClick={handleShowModal}>
+              <Image
+                className="w-100"
+                src={process.env.PUBLIC_URL + '/imgs/menu_icon.svg'}
+              />
+            </div>
+          </Nav>
+        </Container>
+      </Navbar>
+      {showModal ? (
+        <NavModalView
+          fadeOut={fadeOut}
+          handleClose={handleCloseModal}
+          handleAnimationEnd={handleAnimationEnd}
+        />
+      ) : null}
+    </header>
   );
 };
 
