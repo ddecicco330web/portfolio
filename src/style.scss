@@ -85,6 +85,14 @@ ul {
   }
 }
 
+.github-icon {
+  mask-image: url('../public/imgs/github_icon.svg');
+}
+
+.link-icon {
+  mask-image: url('../public/imgs/link_chain_icon.svg');
+}
+
 // Navbar
 //////////////
 .navbar {
@@ -92,7 +100,6 @@ ul {
   position: fixed;
   height: 100px;
   width: 100%;
-  transition: all 0.4s ease 0s;
   padding-left: 35px;
   z-index: 999;
   transition: 0.4s ease 0s;
@@ -102,6 +109,7 @@ ul {
 .icon {
   width: 32px;
   height: 32px;
+  mask-size: cover;
 }
 
 .menu-icon {
@@ -184,6 +192,18 @@ ul {
 }
 
 // Intro
+.intro-bg {
+  background-image: linear-gradient(
+      to right,
+      rgba(23, 211, 151, 0.8),
+      rgba(7, 247, 247, 0.8)
+    ),
+    url('../public/imgs/home-img.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top;
+}
+
 .intro-content {
   padding: 35px;
   padding-top: 105px;
@@ -280,6 +300,12 @@ ul {
 }
 
 // Project Card
+.project-card-img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
 .project-card {
   width: 300px;
   height: 300px;

@@ -14,7 +14,8 @@ const AboutView = () => {
           <div className="resume-btn gradient-bg">
             <a
               href={process.env.PUBLIC_URL + '/Dominic_DeCicco_Resume.pdf'}
-              target="blank"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Download Resume
             </a>

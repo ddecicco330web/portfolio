@@ -1,6 +1,6 @@
+import React, { useState, useEffect } from 'react';
 import { Container, Nav, Navbar, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
 import NavModalView from '../nav-modal-view/nav-modal-view';
 
 const NavigationBar = () => {
@@ -48,7 +48,8 @@ const NavigationBar = () => {
             <Nav.Link
               as={Link}
               to="https://www.linkedin.com/in/dominicdecicco/"
-              target="blank"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="icon">
                 <Image
@@ -59,7 +60,8 @@ const NavigationBar = () => {
             <Nav.Link
               as={Link}
               to="https://github.com/ddecicco330web"
-              target="blank"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div className="icon">
                 <Image src={process.env.PUBLIC_URL + '/imgs/github_icon.svg'} />
