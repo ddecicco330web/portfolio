@@ -5,7 +5,22 @@ const NavModalView = ({ fadeOut, handleClose, handleAnimationEnd }) => {
         className={'nav-modal ' + (fadeOut ? 'fadeOut' : 'fadeIn')}
         onClick={handleClose}
         onAnimationEnd={handleAnimationEnd}
-      ></div>
+      >
+        <ul>
+          <li>
+            <a href="#intro">Home</a>
+          </li>
+          <li>
+            <a href="#about">About</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import NavModalView from '../nav-modal-view/nav-modal-view';
 
-const NavigationBar = React.memo(() => {
+const NavigationBar = () => {
   const [showModal, setShowModal] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,7 +34,7 @@ const NavigationBar = React.memo(() => {
   }, [isScrolled]);
 
   return (
-    <div>
+    <header>
       <Navbar id="header" variant="dark" className={isScrolled ? 'fixed' : ''}>
         <Container fluid>
           <Navbar.Brand
@@ -83,8 +83,8 @@ const NavigationBar = React.memo(() => {
           handleAnimationEnd={handleAnimationEnd}
         />
       ) : null}
-    </div>
+    </header>
   );
-});
+};
 
 export default NavigationBar;

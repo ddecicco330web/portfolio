@@ -8,7 +8,7 @@ const ProjectsView = () => {
       <Row className="projects-title-bg dark-bg">
         <Col>
           <div className="section-title">
-            <h2 className="gradient-bg">Projects</h2>
+            <h2 className="gradient-bg">PROJECTS</h2>
           </div>
         </Col>
       </Row>

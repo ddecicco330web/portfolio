@@ -7,11 +7,12 @@ $gradientStart: #17d396;
 $gradientEnd: #07f7f7;
 $navModalColor: #000;
 $primaryColor: #00d7bb;
-$resumeBtnShadowColor: rgba(22, 213, 156, 0.7);
-$resumeBtnColor: #fff;
+$btnShadowColor: rgba(22, 213, 156, 0.7);
 $darkTransparentBG: rgba(0, 0, 0, 0.2);
 $darkShadowColor: #3e3e3e;
 $lightTransparentBG: rgb(255, 255, 255, 0.9);
+$formColor: #ccc;
+$scrollbarBG: #313741;
 
 * {
   margin: 0;
@@ -24,7 +25,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
-  color: white;
+  color: #fff;
 }
 
 ul {
@@ -71,10 +72,17 @@ ul {
   color: $primaryColor;
 }
 
-.section-title h2 {
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.section-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 35px 0;
+
+  h2 {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 // Navbar
@@ -87,6 +95,8 @@ ul {
   transition: all 0.4s ease 0s;
   padding-left: 35px;
   z-index: 999;
+  transition: 0.4s ease 0s;
+  transition-property: height, padding;
 }
 
 .icon {
@@ -101,11 +111,26 @@ ul {
 }
 
 .fixed {
-  background: linear-gradient(to right, $gradientStart, $gradientEnd);
-  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.27);
   padding: 20px 0;
-  transition: all 0.4s ease 0s;
   height: 75px;
+}
+
+.navbar::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.27);
+  background: linear-gradient(to right, $gradientStart, $gradientEnd);
+  opacity: 0;
+  transition: opacity 0.4s ease 0s;
+  z-index: -1;
+}
+
+.navbar.fixed::before {
+  opacity: 1;
 }
 
 // Nav Modal
@@ -125,11 +150,29 @@ ul {
 
 .nav-modal {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $navModalColor;
   width: 100%;
   height: 100%;
   animation: 0.5s forwards;
   z-index: 9999;
+
+  ul {
+    list-style: none;
+    text-align: center;
+  }
+
+  li {
+    margin-bottom: 25px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 30px;
+    font-weight: 600;
+  }
 }
 
 .nav-modal.fadeIn {
@@ -191,9 +234,7 @@ ul {
 }
 
 .about-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: block;
   text-align: left;
 }
 
@@ -219,10 +260,10 @@ ul {
   width: 12em;
 
   a {
-    box-shadow: 0 0 20px $resumeBtnShadowColor;
+    box-shadow: 0 0 20px $btnShadowColor;
     padding: 10px 20px;
     border-radius: 5px;
-    color: $resumeBtnColor;
+    color: inherit;
     font-weight: 600;
     display: inline-block;
     text-decoration: none;
@@ -230,12 +271,8 @@ ul {
 }
 
 // Projects
-.projects-title-bg .section-title {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
+#projects {
+  scroll-margin-top: 100px;
 }
 
 .projects-content {
@@ -249,13 +286,11 @@ ul {
 }
 
 .project-overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   position: absolute;
   z-index: 1;
   opacity: 0;
-  transition: all 0.4s;
+  transition: opacity 0.4s;
 }
 
 .project-overlay:hover,
@@ -308,7 +343,7 @@ ul {
   height: 100%;
 
   a {
-    display: flex;
+    display: inline-block;
     margin-right: 10px;
   }
 }
@@ -332,6 +367,117 @@ ul {
   background-color: $primaryColor;
 
   .icon {
-    background-color: white;
+    background-color: #fff;
   }
+}
+
+// Contact
+.contact-form-btn {
+  background-color: transparent;
+  color: $primaryColor;
+  border-image: linear-gradient(to right, $gradientStart, $gradientEnd);
+  border-image-width: 1px;
+  border-image-slice: 1;
+  padding: 13px 50px;
+  transition: all 0.3s ease 0;
+}
+
+.contact-form-btn:focus,
+.contact-form-btn:hover {
+  background-color: $primaryColor;
+  font-weight: 600;
+  color: $darkBG;
+  box-shadow: 0 1px 20px $btnShadowColor;
+}
+
+.form-control {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid $formColor;
+  transition: all 0.4s;
+  color: $formColor;
+}
+
+.form-control:focus,
+.form-control.is-invalid:focus {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid $primaryColor;
+  box-shadow: none;
+  color: $formColor;
+}
+
+.form-control.is-invalid {
+  border-bottom: 2px solid $formColor;
+  box-shadow: none;
+  background-image: none;
+}
+
+.form-control:focus + span {
+  color: $primaryColor;
+  font-size: 11px;
+  top: -3px;
+}
+
+.form-group {
+  position: relative;
+
+  span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: $formColor;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: all 0.4s;
+    font-size: 14px;
+  }
+}
+
+.invalid-feedback {
+  color: $primaryColor;
+}
+
+.message-container {
+  background-color: #313741;
+  color: #02cfb4;
+  font-weight: 300;
+  border: none;
+  padding: 10px;
+}
+
+.close-btn,
+.close-btn:hover,
+.close-btn:focus {
+  padding: 0;
+  margin: 0;
+  width: 25px;
+  height: 25px;
+  margin-right: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background: $primaryColor;
+  border: none;
+  font-weight: 700;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-button {
+  display: block;
+  height: 0px;
+  border-radius: 0px;
+  background-color: $scrollbarBG;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $primaryColor;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $scrollbarBG;
 }

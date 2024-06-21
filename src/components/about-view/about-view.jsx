@@ -20,7 +20,7 @@ const AboutView = () => {
             </a>
           </div>
         </Col>
-        <Col className="about-content" md={6} xs={12}>
+        <Col className="about-content" md={6} sm={12}>
           <div className="section-title">
             <h2 className="gradient-bg">ABOUT ME</h2>
           </div>
