@@ -16,11 +16,11 @@ const ContactView = () => {
     emailjs.init('B9AtGVDb0s4A6iO5I');
   }, []);
 
+  const re = new RegExp('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const re = new RegExp('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const ContactView = () => {
 
     setMessage('');
 
-    if (document.querySelector('.is-invalid')) setShowErrors(true);
+    if (!validateForm()) setShowErrors(true);
     else {
       emailjs
         .sendForm(
@@ -39,35 +39,52 @@ const ContactView = () => {
         )
         .then(
           (result) => {
-            setFormData({
-              name: '',
-              email: '',
-              message: ''
-            });
-            setShowErrors(false);
-            setMessage('Message sent.');
+            handleSuccess();
           },
           (error) => {
-            setMessage('Something went wrong.');
+            handleError();
           }
         );
     }
   };
 
+  const handleSuccess = () => {
+    setFormData({
+      name: '',
+      email: '',
+      message: ''
+    });
+    setShowErrors(false);
+    setMessage('Message sent.');
+  };
+
+  const handleError = () => {
+    setMessage('Something went wrong.');
+  };
+
+  const validateForm = () => {
+    return (
+      formData.name.length > 0 &&
+      re.test(String(formData.email).toLowerCase()) &&
+      formData.message.length > 0
+    );
+  };
+
   return (
-    <section id="contact">
-      <Row className="dark-bg">
-        <Col>
+    <section id="contact" className="contact">
+      <Row className="contact__title-row bg--dark">
+        <Col className="contact__title-col">
           <div className="section-title">
-            <h2 className="gradient-bg">CONTACT ME</h2>
+            <h2 className="section-title__text bg--gradient">CONTACT ME</h2>
           </div>
         </Col>
       </Row>
-      <Row className="dark-bg">
-        <Col>
-          <Form noValidate className="form" onSubmit={handleSubmit}>
-            <Row className="mb-5 mt-5">
-              <Col md={6}>
+
+      <Row className="contact__form-row bg--dark">
+        <Col className="contact__form-col">
+          <Form noValidate className="contact__form" onSubmit={handleSubmit}>
+            <Row className="form__top-row mb-5 mt-5">
+              <Col className="form__top-col" md={6}>
                 <Form.Group className="form-group">
                   <Form.Control
                     type="text"
@@ -77,14 +94,15 @@ const ContactView = () => {
                     required
                     isInvalid={!formData.name.length}
                   />
-                  <span>NAME *</span>
-                  {showErrors ? (
+                  <span className="form-group__label">NAME *</span>
+                  {showErrors && (
                     <Form.Control.Feedback type="invalid">
                       Please enter your name.
                     </Form.Control.Feedback>
-                  ) : null}
+                  )}
                 </Form.Group>
               </Col>
+
               <Col md={6}>
                 <Form.Group className="form-group">
                   <Form.Control
@@ -96,51 +114,52 @@ const ContactView = () => {
                     isInvalid={!re.test(String(formData.email).toLowerCase())}
                   />
 
-                  <span>EMAIL ADDRESS *</span>
+                  <span className="form-group__label">EMAIL ADDRESS *</span>
 
-                  {showErrors ? (
+                  {showErrors && (
                     <Form.Control.Feedback type="invalid">
                       Please enter a valid email address.
                     </Form.Control.Feedback>
-                  ) : null}
+                  )}
                 </Form.Group>
               </Col>
             </Row>
+
             <Row className="mb-3">
               <Col md={12}>
                 <Form.Group className="form-group">
                   <Form.Control
                     as="textarea"
-                    rows={3}
+                    rows={5}
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
                     isInvalid={!formData.message.length}
                   />
-                  <span>MESSAGE *</span>
-                  {showErrors ? (
+                  <span className="form-group__label">MESSAGE *</span>
+                  {showErrors && (
                     <Form.Control.Feedback type="invalid">
                       Please enter your message.
                     </Form.Control.Feedback>
-                  ) : null}
+                  )}
                 </Form.Group>
               </Col>
             </Row>
-            {message !== '' ? (
-              <Row className="d-block w-100 text-center ps-5 pe-5">
-                <div className="message-container">
-                  <span className="me-2">{message}</span>{' '}
+            {message !== '' && (
+              <Row className="form__message-row d-block w-100 text-center ps-5 pe-5">
+                <Col className="form__message-col d-block" sm={12}>
+                  <span className="form__message-text me-2">{message}</span>{' '}
                   <Button className="close-btn" onClick={() => setMessage('')}>
                     X
                   </Button>
-                </div>
+                </Col>
               </Row>
-            ) : null}
+            )}
 
-            <Row className="mb-5 mt-5">
-              <Col md={12} className="d-block text-center">
-                <Button type="submit" className="contact-form-btn">
+            <Row className="form__submit-row mb-5 mt-5">
+              <Col md={12} className="form__submit-col d-block text-center">
+                <Button type="submit" className="form__submit-btn">
                   SEND MESSAGE
                 </Button>
               </Col>

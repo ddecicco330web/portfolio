@@ -7,19 +7,19 @@ const ProjectCardView = ({ project }) => {
       <Card.Img
         src={process.env.PUBLIC_URL + project.image}
         alt={project.name}
-        className="project-card-img"
+        className="project-card__img"
       />
       <div className="project-overlay w-100 h-100">
-        <div className="project-overlay-content">
-          <div className="project-links">
+        <div className="project-overlay__content">
+          <div className="project__links">
             <Link
               to={project.gh_link}
               target="_blank"
-              className="project-link"
+              className="project__link"
               rel="noopener noreferrer"
             >
-              <div className="icon-container ">
-                <div className="icon github-icon primary-bg" />
+              <div className="icon-container">
+                <div className="icon icon--github bg--primary" />
               </div>
             </Link>
             {project.live_link && (
@@ -30,16 +30,16 @@ const ProjectCardView = ({ project }) => {
                 rel="noopener noreferrer"
               >
                 <div className="icon-container">
-                  <div className="icon link-icon primary-bg" />
+                  <div className="icon icon--link bg--primary" />
                 </div>
               </Link>
             )}
           </div>
-          <div className="project-text">
-            <h4>{project.name}</h4>
-            <p>
+          <div className="project__info">
+            <h4 className="project__name">{project.name}</h4>
+            <p className="project__skills">
               {project.skills.map((skill, index) => (
-                <span key={index} className="text-primary-color">
+                <span key={index} className="project__skill text--primary">
                   {skill}
                   {index < project.skills.length - 1 && ','}{' '}
                 </span>

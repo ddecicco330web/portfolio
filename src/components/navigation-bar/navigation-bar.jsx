@@ -34,25 +34,27 @@ const NavigationBar = () => {
   }, [isScrolled]);
 
   return (
-    <header>
-      <Navbar id="header" variant="dark" className={isScrolled ? 'fixed' : ''}>
-        <Container fluid>
+    <header id="header">
+      <Navbar variant="dark" className={isScrolled ? 'fixed' : ''}>
+        <Container fluid className="navbar__container">
           <Navbar.Brand
-            className="navbar-brand"
+            className="navbar__brand"
             as={Link}
             to={process.env.PUBLIC_URL}
           >
             Dominic DeCicco
           </Navbar.Brand>
-          <Nav className="me-auto">
+          <Nav className="me-auto navbar__links">
             <Nav.Link
               as={Link}
               to="https://www.linkedin.com/in/dominicdecicco/"
               target="_blank"
               rel="noopener noreferrer"
+              className="navbar__link"
             >
               <div className="icon">
                 <Image
+                  className="navbar__icon-image"
                   src={process.env.PUBLIC_URL + '/imgs/linkedin_icon.svg'}
                 />
               </div>
@@ -62,16 +64,20 @@ const NavigationBar = () => {
               to="https://github.com/ddecicco330web"
               target="_blank"
               rel="noopener noreferrer"
+              className="navbar__link"
             >
               <div className="icon">
-                <Image src={process.env.PUBLIC_URL + '/imgs/github_icon.svg'} />
+                <Image
+                  className="navbar__icon-image"
+                  src={process.env.PUBLIC_URL + '/imgs/github_icon.svg'}
+                />
               </div>
             </Nav.Link>
           </Nav>
-          <Nav className="ml-auto">
-            <div className="icon menu-icon" onClick={handleShowModal}>
+          <Nav className="navbar__menu ml-auto">
+            <div className="navbar__icon--menu" onClick={handleShowModal}>
               <Image
-                className="w-100"
+                className="navbar__icon-image w-100"
                 src={process.env.PUBLIC_URL + '/imgs/menu_icon.svg'}
               />
             </div>

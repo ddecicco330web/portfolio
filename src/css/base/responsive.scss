@@ -1,0 +1,46 @@
+@media screen and (max-width: 768px) {
+  .about__img-resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+  }
+
+  .about__resume-btn {
+    margin-left: 0;
+    margin-bottom: 2rem;
+  }
+
+  .about__bg {
+    padding: 0;
+  }
+
+  .projects__content {
+    padding: 1rem 0;
+  }
+
+  .form-group {
+    margin-bottom: 4rem;
+  }
+
+  #contact {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .about__img::after {
+    display: none;
+  }
+
+  .project-overlay,
+  .project-overlay {
+    background-color: $darkTransparentBG;
+    opacity: 1;
+    box-shadow: 1px 6px 24px $darkShadowColor;
+
+    .project-overlay__content::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
