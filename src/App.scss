@@ -1,13 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 
-@import './css/base/reset.scss';
-@import './css/abstracts/variables.scss';
-@import './css/base/animations.scss';
-@import './css/components/components.scss';
-@import './css/utilities/utilities.scss';
-@import './css/pages/home.scss';
-@import './css/base/responsive.scss';
+@import './scss/abstracts/variables.scss';
+@import './scss/base/reset.scss';
+@import './scss/base/animations.scss';
+@import './scss/components/components.scss';
+@import './scss/utilities/utilities.scss';
+@import './scss/pages/home.scss';
+@import './scss/base/responsive.scss';
 
 .App {
   text-align: center;

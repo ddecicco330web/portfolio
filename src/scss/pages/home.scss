@@ -23,28 +23,28 @@
     width: 5rem;
     height: 5rem;
   }
-}
 
-.fixed {
-  height: 7.5rem;
-}
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.27);
+    background: linear-gradient(to right, $gradient-start, $gradient-end);
+    opacity: 0;
+    transition: opacity 0.4s ease 0s;
+    z-index: -1;
+  }
 
-.navbar::before {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.27);
-  background: linear-gradient(to right, $gradientStart, $gradientEnd);
-  opacity: 0;
-  transition: opacity 0.4s ease 0s;
-  z-index: -1;
-}
+  &.fixed {
+    height: 7.5rem;
 
-.navbar.fixed::before {
-  opacity: 1;
+    &::before {
+      opacity: 1;
+    }
+  }
 }
 
 // Nav Modal
@@ -66,7 +66,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $navModalColor;
+  background-color: $nav-modal-color;
   width: 100%;
   height: 100%;
   animation: 0.5s forwards;
@@ -87,22 +87,22 @@
     font-size: 3rem;
     font-weight: 600;
   }
-}
 
-.nav-modal__content.fadeIn {
-  animation-name: fadeIn;
-}
+  &.fadeIn {
+    animation-name: fadeIn;
+  }
 
-.nav-modal__content.fadeOut {
-  animation-name: fadeOut;
+  &.fadeOut {
+    animation-name: fadeOut;
+  }
 }
 
 // Intro
 .intro__bg {
   background-image: linear-gradient(
       to right,
-      rgba(23, 211, 151, 0.8),
-      rgba(7, 247, 247, 0.8)
+      rgba($gradient-start, 0.8),
+      rgba($gradient-end, 0.8)
     ),
     url('../../../public/imgs/home-img.jpg');
   background-attachment: fixed;
@@ -146,17 +146,17 @@
   .about__img__img {
     height: 100%;
   }
-}
 
-.about__img::after {
-  border: 7px solid $primaryColor;
-  content: '';
-  height: 100%;
-  left: 5rem;
-  position: absolute;
-  top: -4.5rem;
-  width: 60%;
-  z-index: -1;
+  &::after {
+    border: 7px solid $primary-color;
+    content: '';
+    height: 100%;
+    left: 5rem;
+    position: absolute;
+    top: -4.5rem;
+    width: 60%;
+    z-index: -1;
+  }
 }
 
 .about__content {
@@ -223,6 +223,17 @@
   opacity: 0;
   transition: opacity 0.4s;
 
+  &:hover,
+  &:focus {
+    background-color: $bg-dark-transparent;
+    opacity: 1;
+    box-shadow: 1px 6px 24px $dark-shadow-color;
+
+    .project-overlay__content::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
   .project-overlay__content {
     display: flex;
     flex-direction: column;
@@ -230,6 +241,19 @@
     padding: 2rem 3rem;
     width: 100%;
     height: 100%;
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      height: 90%;
+      background-color: $bg-light-transparent;
+      transition: all 0.4s;
+      transform: translate(-50%, -50%) scale(0);
+      z-index: -1;
+    }
 
     .project__name {
       font-weight: 700;
@@ -256,32 +280,8 @@
   }
 }
 
-.project-overlay:hover,
-.project-overlay:focus {
-  background-color: $darkTransparentBG;
-  opacity: 1;
-  box-shadow: 1px 6px 24px $darkShadowColor;
-
-  .project-overlay__content::before {
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-.project-overlay__content::before {
-  content: ' ';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 90%;
-  height: 90%;
-  background-color: $lightTransparentBG;
-  transition: all 0.4s;
-  transform: translate(-50%, -50%) scale(0);
-  z-index: -1;
-}
-
 .icon-container {
-  border: $primaryColor 1px solid;
+  border: $primary-color 1px solid;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -290,66 +290,67 @@
   align-items: center;
   transition: 0.4s;
 
+  &:hover {
+    background-color: $primary-color;
+
+    .icon {
+      background-color: $text-color;
+    }
+  }
+
   .icon {
     transition: 0.4s;
-  }
-}
-
-.icon-container:hover {
-  background-color: $primaryColor;
-
-  .icon {
-    background-color: #fff;
   }
 }
 
 // Contact
 .form__submit-btn {
   background-color: transparent;
-  color: $primaryColor;
-  border-image: linear-gradient(to right, $gradientStart, $gradientEnd);
+  color: $primary-color;
+  border-image: linear-gradient(to right, $gradient-start, $gradient-end);
   border-image-width: 1px;
   border-image-slice: 1;
   padding: 1.5rem 5rem;
   transition: all 0.3s ease 0;
-}
+  font-size: 1.6rem;
 
-.form__submit-btn:focus,
-.form__submit-btn:hover {
-  background-color: $primaryColor;
-  font-weight: 600;
-  color: $darkBG;
-  box-shadow: 0 1px 20px $btnShadowColor;
+  &:focus,
+  &:hover {
+    background-color: $primary-color;
+    font-weight: 600;
+    color: $bg-dark;
+    box-shadow: 0 1px 20px $btn-shadow-color;
+  }
 }
 
 .form-control {
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid $formColor;
+  border-bottom: 2px solid $form-color;
   transition: all 0.4s;
-  color: $formColor;
+  color: $form-color;
   font-size: 1.6rem;
-}
 
-.form-control:focus,
-.form-control.is-invalid:focus {
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid $primaryColor;
-  box-shadow: none;
-  color: $formColor;
-}
+  &:focus,
+  &.is-invalid:focus {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $primary-color;
+    box-shadow: none;
+    color: $form-color;
 
-.form-control.is-invalid {
-  border-bottom: 2px solid $formColor;
-  box-shadow: none;
-  background-image: none;
-}
+    & + .form-group__label {
+      color: $primary-color;
+      font-size: 1.1rem;
+      top: -3px;
+    }
+  }
 
-.form-control:focus + span {
-  color: $primaryColor;
-  font-size: 1.1rem;
-  top: -3px;
+  &.is-invalid {
+    border-bottom: 2px solid $form-color;
+    box-shadow: none;
+    background-image: none;
+  }
 }
 
 .form-group {
@@ -359,7 +360,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    color: $formColor;
+    color: $form-color;
     pointer-events: none;
     transform: translateY(-50%);
     transition: all 0.4s;
@@ -368,12 +369,12 @@
 }
 
 .invalid-feedback {
-  color: $primaryColor;
+  color: $primary-color;
 }
 
 .form__message-col {
-  background-color: #313741;
-  color: #02cfb4;
+  background-color: $bg-msg-col;
+  color: $primary-color;
   font-weight: 300;
   border: none;
   padding: 1rem;
@@ -387,8 +388,8 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  color: #fff;
-  background: $primaryColor;
+  color: $text-color;
+  background: $primary-color;
   border: none;
   font-weight: 700;
 }
@@ -402,14 +403,14 @@
   display: block;
   height: 0px;
   border-radius: 0px;
-  background-color: $scrollbarBG;
+  background-color: $bg-scrollbar;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: $primaryColor;
+  background-color: $primary-color;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: $scrollbarBG;
+  background-color: $bg-scrollbar;
 }
