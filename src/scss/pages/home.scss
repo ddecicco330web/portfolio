@@ -2,6 +2,20 @@
   height: 100vh;
 }
 
+@mixin absolute-position($top: auto, $left: auto, $bottom: auto, $right: auto) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  bottom: $bottom;
+  right: $right;
+}
+
+@mixin flex-center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // Navbar
 //////////////
 .navbar {
@@ -25,12 +39,8 @@
   }
 
   &::before {
-    position: absolute;
+    @include absolute-position(0, 0, 0, 0);
     content: '';
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
     box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.27);
     background: linear-gradient(to right, $gradient-start, $gradient-end);
     opacity: 0;
@@ -50,9 +60,7 @@
 // Nav Modal
 //////////////
 #nav-modal__overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center-content();
   background-color: transparent;
   position: fixed;
   top: 0;
@@ -63,9 +71,7 @@
 }
 
 .nav-modal__content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center-content();
   background-color: $nav-modal-color;
   width: 100%;
   height: 100%;
@@ -148,12 +154,10 @@
   }
 
   &::after {
+    @include absolute-position(-4.5rem, 5rem);
     border: 7px solid $primary-color;
     content: '';
     height: 100%;
-    left: 5rem;
-    position: absolute;
-    top: -4.5rem;
     width: 60%;
     z-index: -1;
   }
@@ -178,11 +182,9 @@
 }
 
 .about__resume-btn {
+  @include flex-center-content();
   margin-top: 3rem;
   margin-left: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 20rem;
 
   .resume-btn__link {
@@ -243,10 +245,8 @@
     height: 100%;
 
     &::before {
+      @include absolute-position(50%, 50%);
       content: ' ';
-      position: absolute;
-      top: 50%;
-      left: 50%;
       width: 90%;
       height: 90%;
       background-color: $bg-light-transparent;
@@ -266,9 +266,7 @@
     }
 
     .project__links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex-center-content();
       width: 100%;
       height: 100%;
 
@@ -281,13 +279,11 @@
 }
 
 .icon-container {
+  @include flex-center-content();
   border: $primary-color 1px solid;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition: 0.4s;
 
   &:hover {
@@ -357,9 +353,7 @@
   position: relative;
 
   .form-group__label {
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include absolute-position(0, 0);
     color: $form-color;
     pointer-events: none;
     transform: translateY(-50%);
