@@ -1,11 +1,15 @@
+import { Button } from 'react-bootstrap';
+
 const NavModalView = ({ fadeOut, handleClose, handleAnimationEnd }) => {
   return (
     <div id="nav-modal__overlay" className="nav-modal__overlay">
       <div
         className={'nav-modal__content ' + (fadeOut ? 'fadeOut' : 'fadeIn')}
-        onClick={handleClose}
         onAnimationEnd={handleAnimationEnd}
       >
+        <Button className="close-btn" onClick={handleClose}>
+          X
+        </Button>
         <nav className="nav-modal__nav">
           <ul className="nav-modal__list">
             <li className="nav-modal__item">
